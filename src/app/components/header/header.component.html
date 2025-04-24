@@ -1,0 +1,45 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container">
+    <nav class="nav">
+      <div class="logo">
+        <a href="#">Papa Francisco</a>
+      </div>
+
+      <button
+        class="menu-toggle"
+        [class.active]="menuOpen"
+        (click)="toggleMenu()"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="nav-links" [class.active]="menuOpen">
+        <li [class.active]="activeSection === 'about'">
+          <a href="#about" (click)="scrollToSection('about')">Quem Foi</a>
+        </li>
+
+        <li [class.active]="activeSection === 'timeline'">
+          <a href="#timeline" (click)="scrollToSection('timeline')"
+            >Trajetória</a
+          >
+        </li>
+        <li [class.active]="activeSection === 'impact'">
+          <a href="#impact" (click)="scrollToSection('impact')">Legado</a>
+        </li>
+        <li [class.active]="activeSection === 'quotes'">
+          <a href="#quotes" (click)="scrollToSection('quotes')">Testemunhos</a>
+        </li>
+        <li>
+          <a
+            href="#final"
+            class="btn btn-primary"
+            (click)="scrollToSection('final')"
+            >Saiba Mais</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

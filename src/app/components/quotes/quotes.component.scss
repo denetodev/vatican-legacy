@@ -1,0 +1,320 @@
+@use "../../../styles/variables" as vars;
+@use "../../../styles/mixins" as mixins;
+@use "../../../styles/animations" as anims;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+.quotes-section {
+  padding: 6rem 2rem;
+  background-color: #f9fbfc;
+  position: relative;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../../assets/vatican-bg.jpg") center/cover no-repeat;
+    opacity: 0.035;
+    z-index: 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: vars.$primary;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 2.4rem;
+  }
+}
+
+.quotes-divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    vars.$secondary,
+    lighten(vars.$secondary, 10%)
+  );
+  margin: 0 auto 4rem;
+  border-radius: 2px;
+}
+
+.quotes-slider {
+  max-width: 900px;
+  margin: vars.$spacing-lg auto;
+  position: relative;
+  height: 340px;
+  perspective: 1000px;
+
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+
+  @media (max-width: 480px) {
+    height: 450px;
+  }
+}
+
+.quote-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+  z-index: 0;
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 2;
+    pointer-events: all;
+  }
+}
+
+.quote-card {
+  background-color: vars.$white;
+  border-radius: 12px;
+  padding: vars.$spacing-xl;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+    .quote-icon {
+      transform: rotate(-5deg) scale(1.05);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: vars.$spacing-lg;
+  }
+}
+
+.quote-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, vars.$primary, vars.$secondary);
+}
+
+.quote-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(244, 162, 97, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: transform 0.4s ease;
+
+  .material-icons {
+    font-size: 2.5rem;
+    color: vars.$secondary;
+    transform: rotate(180deg);
+  }
+}
+
+.quote-text {
+  font-size: 1.6rem;
+  margin-bottom: vars.$spacing-lg;
+  font-style: italic;
+  color: vars.$primary;
+  line-height: 1.6;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: rgba(244, 162, 97, 0.3);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: rgba(244, 162, 97, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+  }
+}
+
+.quote-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.quote-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid vars.$white;
+  box-shadow: 0 0 0 2px vars.$secondary;
+
+  &.papal {
+    background-image: url("../../../assets/pope-francis.jpeg");
+  }
+
+  &.rabbi {
+    background-image: url("../../../assets/OSK.jpeg");
+  }
+}
+
+.quote-author {
+  font-weight: 600;
+  color: vars.$secondary;
+  font-size: 1.1rem;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: vars.$spacing-lg;
+  gap: 1rem;
+}
+
+.prev-btn,
+.next-btn {
+  background-color: vars.$white;
+  color: vars.$primary;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    background-color: vars.$primary;
+    color: vars.$white;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: vars.$white;
+      color: vars.$primary;
+      transform: none;
+    }
+  }
+
+  .material-icons {
+    font-size: 1.5rem;
+  }
+}
+
+.slider-dots {
+  display: flex;
+  margin: 0 vars.$spacing-md;
+  gap: 8px;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #d5d9e2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background-color: vars.$secondary;
+      width: 20px;
+      border-radius: 5px;
+    }
+
+    &:hover:not(.active) {
+      background-color: #b8bcc8;
+      transform: scale(1.2);
+    }
+  }
+}
+
+// Media Queries para Responsividade
+@media (max-width: 768px) {
+  .quotes-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .slider-controls {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .quotes-divider {
+    margin-bottom: 2rem;
+  }
+}

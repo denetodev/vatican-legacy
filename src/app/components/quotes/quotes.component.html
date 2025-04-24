@@ -1,0 +1,76 @@
+<section id="quotes" class="quotes-section">
+  <div class="container">
+    <h2 class="section-title">Frases & Depoimentos</h2>
+    <div class="quotes-divider"></div>
+    
+    <div class="quotes-slider">
+      <div class="quote-slide" [class.active]="currentSlide === 0" @fadeSlide>
+        <div class="quote-card">
+          <div class="quote-decoration"></div>
+          <div class="quote-icon">
+            <span class="material-icons">format_quote</span>
+          </div>
+          <p class="quote-text">Quem sou eu para julgar? Se uma pessoa busca a Deus e tem boa vontade, quem sou eu para julgá-la?</p>
+          <div class="quote-footer">
+            <div class="quote-image papal"></div>
+            <p class="quote-author">Papa Francisco</p>
+          </div>
+        </div>
+      </div>
+      <div class="quote-slide" [class.active]="currentSlide === 1" @fadeSlide>
+        <div class="quote-card">
+          <div class="quote-decoration"></div>
+          <div class="quote-icon">
+            <span class="material-icons">format_quote</span>
+          </div>
+          <p class="quote-text">O dinheiro deve servir, não governar!</p>
+          <div class="quote-footer">
+            <div class="quote-image papal"></div>
+            <p class="quote-author">Papa Francisco</p>
+          </div>
+        </div>
+      </div>
+      <div class="quote-slide" [class.active]="currentSlide === 2" @fadeSlide>
+        <div class="quote-card">
+          <div class="quote-decoration"></div>
+          <div class="quote-icon">
+            <span class="material-icons">format_quote</span>
+          </div>
+          <p class="quote-text">Um pouco de misericórdia torna o mundo menos frio e mais justo.</p>
+          <div class="quote-footer">
+            <div class="quote-image papal"></div>
+            <p class="quote-author">Papa Francisco</p>
+          </div>
+        </div>
+      </div>
+      <div class="quote-slide" [class.active]="currentSlide === 3" @fadeSlide>
+        <div class="quote-card">
+          <div class="quote-decoration"></div>
+          <div class="quote-icon">
+            <span class="material-icons">format_quote</span>
+          </div>
+          <p class="quote-text">O Papa Francisco trouxe uma nova era de diálogo inter-religioso, mostrando que podemos unir forças em causas comuns da humanidade.</p>
+          <div class="quote-footer">
+            <div class="quote-image rabbi"></div>
+            <p class="quote-author">Rabino Abraham Skorka</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slider-controls">
+      <button class="prev-btn" (click)="prevSlide()" [disabled]="isTransitioning">
+        <span class="material-icons">chevron_left</span>
+      </button>
+      <div class="slider-dots">
+        <span class="dot" [class.active]="currentSlide === 0" (click)="goToSlide(0)"></span>
+        <span class="dot" [class.active]="currentSlide === 1" (click)="goToSlide(1)"></span>
+        <span class="dot" [class.active]="currentSlide === 2" (click)="goToSlide(2)"></span>
+        <span class="dot" [class.active]="currentSlide === 3" (click)="goToSlide(3)"></span>
+      </div>
+      <button class="next-btn" (click)="nextSlide()" [disabled]="isTransitioning">
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </div>
+  </div>
+</section>

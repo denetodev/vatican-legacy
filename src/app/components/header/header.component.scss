@@ -1,0 +1,227 @@
+@use "../../../styles/variables" as vars;
+@use "../../../styles/mixins" as mixins;
+
+.header {
+  background-color: rgba(vars.$white, 0.98);
+  box-shadow: 0 4px 20px rgba(26, 60, 135, 0.15);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &.scrolled {
+    padding: 0.2rem 0;
+    background-color: rgba(vars.$white, 0.92);
+  }
+
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    position: relative;
+  }
+
+  .logo {
+    a {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: vars.$primary;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.5px;
+      
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 24px;
+        background-color: vars.$secondary;
+        margin-right: 12px;
+        border-radius: 3px;
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover {
+        color: darken(vars.$primary, 10%);
+        
+        &::before {
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-left: 2.5rem;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: vars.$dark-gray;
+        font-weight: 500;
+        font-size: 1.05rem;
+        letter-spacing: 0.3px;
+        transition: all 0.3s ease;
+        padding: 0.5rem 0;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: vars.$secondary;
+          transition: width 0.3s ease;
+        }
+
+        &:hover {
+          color: vars.$primary;
+          
+          &::after {
+            width: 100%;
+          }
+        }
+
+        &.btn-primary {
+          @include mixins.button;
+          background-color: vars.$primary;
+          color: vars.$white;
+          padding: 0.7rem 1.8rem;
+          border-radius: 50px;
+          font-weight: 600;
+          box-shadow: 0 4px 15px rgba(26, 60, 135, 0.25);
+          transition: all 0.3s ease;
+          border: 2px solid transparent;
+          
+          &::after {
+            display: none;
+          }
+
+          &:hover {
+            background-color: transparent;
+            color: vars.$primary;
+            border: 2px solid vars.$primary;
+            transform: translateY(-3px);
+          }
+        }
+      }
+      
+      &.active a {
+        color: vars.$primary;
+        font-weight: 600;
+        
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 100;
+    
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: vars.$primary;
+      margin: 5px 0;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    &.active {
+      .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .menu-toggle {
+      display: block;
+    }
+    
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 70%;
+      max-width: 350px;
+      background-color: vars.$white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: right 0.4s ease;
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      
+      &.active {
+        right: 0;
+      }
+      
+      li {
+        margin: 1.5rem 0;
+        
+        a {
+          font-size: 1.2rem;
+          
+          &.btn-primary {
+            margin-top: 1rem;
+            padding: 0.8rem 2.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .nav {
+      padding: 0.8rem 0;
+    }
+    
+    .logo a {
+      font-size: 1.6rem;
+      
+      &::before {
+        height: 20px;
+      }
+    }
+  }
+}

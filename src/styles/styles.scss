@@ -1,0 +1,26 @@
+@use "variables" as vars;
+@use "mixins" as mixins;
+@use "animations" as anims;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  color: vars.$dark-gray;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+button {
+  @include mixins.button;
+}

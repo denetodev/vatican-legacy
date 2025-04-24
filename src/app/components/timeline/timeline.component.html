@@ -1,0 +1,49 @@
+<section id="timeline" class="section timeline-section">
+  <div class="container">
+    <h2 class="section-title">Trajetória de Amor e Serviço</h2>
+
+    <div class="timeline">
+      <div
+        class="timeline-item"
+        *ngFor="let event of timelineEvents; let isLast = last"
+        @fadeIn
+      >
+        <div class="timeline-content">
+          <div class="timeline-date">{{ event.date }}</div>
+          <div class="timeline-icon">
+            <span class="material-icons">{{
+              getIconForEvent(event.type)
+            }}</span>
+          </div>
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.description }}</p>
+          <div class="timeline-footer" *ngIf="event.link">
+            <a [href]="event.link" class="read-more"
+              >Saiba mais <span class="material-icons">arrow_forward</span></a
+            >
+          </div>
+        </div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-line" *ngIf="!isLast"></div>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <h3 class="text-center mb-3">Conheça Mais Sobre Sua Missão</h3>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="play-button">
+            <span class="material-icons">play_circle_filled</span>
+          </div>
+          <div class="video-overlay">
+            <h4>A Missão de Francisco</h4>
+            <p>
+              Assista ao vídeo e conheça mais sobre a jornada inspiradora do
+              Papa Francisco
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+<section id="about" class="section about-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Biografia</span>
+      <h2 class="section-title">{{ aboutInfo.title }}</h2>
+      <div class="section-divider">
+        <span class="divider-dot"></span>
+        <span class="divider-line"></span>
+        <span class="divider-dot"></span>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <div class="about-image-wrapper">
+        <div class="about-image">
+          <div class="image-decoration decoration-1"></div>
+          <div class="image-decoration decoration-2"></div>
+          <img src="../../../assets/pope-placeholder.jpg" alt="Papa Francisco" />
+          <div class="image-caption">
+            <span class="caption-title">Jorge Mario Bergoglio</span>
+            <span class="caption-text">266º Papa da Igreja Católica</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="quote-block">
+          <div class="quote-mark">"</div>
+          <blockquote>Um homem de fé profunda e simplicidade radical, que dedicou sua vida aos mais necessitados.</blockquote>
+        </div>
+        
+        <p [innerHTML]="aboutInfo.description"></p>
+
+        <div class="highlights">
+          <div class="highlight-item" *ngFor="let item of aboutInfo.highlights; let i = index" [attr.data-delay]="i * 0.2">
+            <div class="highlight-icon">
+              <span class="material-icons">{{ item.icon }}</span>
+            </div>
+            <div class="highlight-content">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-cta">
+          <a href="#timeline" class="btn btn-secondary">Conheça sua Trajetória</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="about-facts">
+      <div class="fact-item">
+        <span class="fact-number">1936</span>
+        <span class="fact-text">Nascimento em<br>Buenos Aires</span>
+      </div>
+      <div class="fact-divider"></div>
+      <div class="fact-item">
+        <span class="fact-number">1969</span>
+        <span class="fact-text">Ordenação<br>Sacerdotal</span>
+      </div>
+      <div class="fact-divider"></div>
+      <div class="fact-item">
+        <span class="fact-number">2013</span>
+        <span class="fact-text">Eleito<br>Papa</span>
+      </div>
+      <div class="fact-divider"></div>
+      <div class="fact-item">
+        <span class="fact-number">2023</span>
+        <span class="fact-text">Legado<br>Eterno</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="shape-decoration shape-left"></div>
+  <div class="shape-decoration shape-right"></div>
+</section>
