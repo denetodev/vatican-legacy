@@ -14,7 +14,7 @@
       to bottom,
       color.adjust(vars.$primary, $lightness: -10%, $alpha: 1),
       /* Começa com o mesmo tom do final do hero */
-        color.adjust(vars.$primary, $lightness: 20%, $alpha: 0.8) 40%,
+        color.adjust(vars.$primary, $lightness: 70%, $alpha: 0.8) 60%,
       rgba(vars.$light-gray, 1) 80%
     ),
     url("../../../assets/papa-francisco-1.jpg");
