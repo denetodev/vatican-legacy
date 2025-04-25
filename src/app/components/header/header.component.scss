@@ -1,5 +1,6 @@
 @use "../../../styles/variables" as vars;
 @use "../../../styles/mixins" as mixins;
+@use 'sass:color';
 
 .header {
   background-color: rgba(vars.$white, 0.98);
@@ -55,7 +56,7 @@
       }
       
       &:hover {
-        color: darken(vars.$primary, 10%);
+        color: color.adjust(vars.$primary, $lightness: -10%);
         
         &::before {
           transform: translateY(-3px);

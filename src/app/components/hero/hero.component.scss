@@ -1,14 +1,20 @@
 @use "../../../styles/variables" as vars;
 @use "../../../styles/mixins" as mixins;
 @use "../../../styles/animations" as animations;
+@use "sass:color";
 
 .hero {
   height: 100vh;
   min-height: 700px;
-  background: linear-gradient(135deg, vars.$primary 0%, darken(vars.$primary, 15%) 100%);
+  background: linear-gradient(
+    to bottom,
+    color.adjust(vars.$primary, $lightness: -15%),
+    color.adjust(vars.$primary, $lightness: -10%)
+      /* Esta cor deve ser idêntica à primeira cor do gradiente do about */
+  );
   position: relative;
   overflow: hidden;
-  padding-top: 80px; // Para compensar o header fixo
+  padding-top: 80px;
 }
 
 .overlay {
@@ -17,7 +23,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../../assets/vatican-bg.jpg");
+  background-image: url("../../../assets/papa-francisco-1.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.08;
@@ -32,12 +38,12 @@
   height: 100%;
   overflow: hidden;
   z-index: 1;
-  
+
   .shape {
     position: absolute;
     border-radius: 50%;
     opacity: 0.07;
-    
+
     &-1 {
       width: 600px;
       height: 600px;
@@ -45,19 +51,19 @@
       top: -200px;
       right: -100px;
     }
-    
+
     &-2 {
       width: 400px;
       height: 400px;
-      background: lighten(vars.$primary, 30%);
+      background-color: color.adjust(vars.$primary, $lightness: 30%);
       bottom: -100px;
       left: -100px;
     }
-    
+
     &-3 {
       width: 300px;
       height: 300px;
-      background: darken(vars.$secondary, 10%);
+      background: color.adjust(vars.$secondary, $lightness: -10%);
       top: 40%;
       right: 25%;
     }
@@ -108,9 +114,9 @@
     font-weight: 800;
     letter-spacing: -1px;
     position: relative;
-    
+
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 80px;
       height: 4px;
@@ -133,7 +139,7 @@
     display: flex;
     gap: 1rem;
     margin-bottom: 3rem;
-    
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -144,56 +150,56 @@
       transition: all 0.3s ease;
       padding: 1rem 2rem;
       min-width: 180px;
-      
+
       svg {
         margin-left: 8px;
         transition: transform 0.3s ease;
       }
-      
+
       &:hover svg {
         transform: translateY(3px);
       }
     }
-    
+
     .btn-primary {
       background-color: vars.$secondary;
-      color: darken(vars.$primary, 25%);
+      color: color.adjust(vars.$primary, $lightness: -25%);
       box-shadow: 0 10px 25px rgba(vars.$secondary, 0.4);
-      
+
       &:hover {
-        background-color: lighten(vars.$secondary, 5%);
+        background-color: color.adjust(vars.$secondary, $lightness: -10%);
         transform: translateY(-3px);
         box-shadow: 0 15px 30px rgba(vars.$secondary, 0.5);
       }
     }
-    
+
     .btn-outline {
       background-color: transparent;
       color: vars.$white;
       border: 2px solid rgba(vars.$white, 0.3);
-      
+
       &:hover {
         border-color: vars.$white;
         background-color: rgba(vars.$white, 0.1);
       }
     }
   }
-  
+
   .hero-stats {
     display: flex;
     gap: 2rem;
-    
+
     .stat {
       display: flex;
       flex-direction: column;
-      
+
       .stat-number {
         font-size: 2.5rem;
         font-weight: 800;
         color: vars.$white;
         line-height: 1;
       }
-      
+
       .stat-label {
         font-size: 0.9rem;
         color: rgba(vars.$white, 0.8);
@@ -211,17 +217,17 @@
   animation: fadeInRight 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.5s;
-  
+
   .image-container {
     position: relative;
     width: 100%;
     max-width: 450px;
-    
+
     .image-frame {
       position: absolute;
       top: -20px;
       left: -20px;
-      width: calc(100% + 40px);
+      width: calc(70% + 40px);
       height: calc(100% + 40px);
       border: 2px solid rgba(vars.$white, 0.2);
       border-radius: 10px;
@@ -229,18 +235,18 @@
     }
 
     img {
-      width: 100%;
+      width: 70%;
       height: auto;
       object-fit: cover;
       border-radius: 10px;
       filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25));
       transition: all 0.5s ease;
-      
+
       &:hover {
         transform: scale(1.02);
       }
     }
-    
+
     .quote {
       position: absolute;
       bottom: -30px;
@@ -267,14 +273,14 @@
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 1.5s;
   opacity: 0;
-  
+
   .mouse {
     width: 30px;
     height: 50px;
     border: 2px solid rgba(vars.$white, 0.5);
     border-radius: 20px;
     position: relative;
-    
+
     .wheel {
       width: 4px;
       height: 10px;
@@ -344,7 +350,7 @@
 
     h1 {
       font-size: 3.8rem;
-      
+
       &::after {
         margin: 20px auto 0;
       }
@@ -354,11 +360,11 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
+
     .hero-actions {
       justify-content: center;
     }
-    
+
     .hero-stats {
       justify-content: center;
     }
@@ -367,7 +373,7 @@
   .hero-image {
     .image-container {
       max-width: 350px;
-      
+
       .quote {
         bottom: -20px;
         right: -20px;
@@ -376,7 +382,7 @@
       }
     }
   }
-  
+
   .shapes {
     .shape-3 {
       display: none;
@@ -390,30 +396,30 @@
     min-height: 100vh;
     padding-bottom: 80px;
   }
-  
+
   .hero-text {
     h1 {
       font-size: 3.2rem;
     }
-    
+
     .subtitle {
       font-size: 1.4rem;
     }
-    
+
     .hero-actions {
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      
+
       .btn {
         width: 100%;
         max-width: 250px;
       }
     }
-    
+
     .hero-stats {
       gap: 1.5rem;
-      
+
       .stat {
         .stat-number {
           font-size: 2rem;
@@ -421,7 +427,7 @@
       }
     }
   }
-  
+
   .scroll-indicator {
     display: none;
   }
@@ -436,23 +442,23 @@
     .subtitle {
       font-size: 1.2rem;
     }
-    
+
     .hero-stats {
       flex-direction: column;
       gap: 1rem;
-      
+
       .stat {
         margin-bottom: 0.5rem;
       }
     }
   }
-  
+
   .hero-image {
     .image-container {
       .image-frame {
         display: none;
       }
-      
+
       .quote {
         position: relative;
         bottom: 0;
@@ -462,9 +468,10 @@
       }
     }
   }
-  
+
   .shapes {
-    .shape-1, .shape-2 {
+    .shape-1,
+    .shape-2 {
       opacity: 0.05;
     }
   }

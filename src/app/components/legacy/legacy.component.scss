@@ -1,15 +1,16 @@
-@use '../../../styles/variables' as vars;
-@use '../../../styles/animations' as anims;
-@use '../../../styles/mixins' as mixins;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@use "../../../styles/variables" as vars;
+@use "../../../styles/animations" as anims;
+@use "../../../styles/mixins" as mixins;
+@use "sass:color";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 .legacy-section {
   position: relative;
   padding: 6rem 2rem;
   background-color: #f8f9fa;
   overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
-  
+  font-family: "Montserrat", sans-serif;
+
   &::before {
     content: "";
     position: absolute;
@@ -17,7 +18,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../../assets/vatican-bg.jpg');
+    background-image: url("../../../assets/papa-francisco-4.jpg");
     background-size: cover;
     background-position: center;
     opacity: 0.03;
@@ -37,7 +38,7 @@
   flex-direction: row;
   align-items: center;
   gap: 4rem;
-  
+
   @media (max-width: 992px) {
     flex-direction: column-reverse;
     gap: 3rem;
@@ -47,7 +48,7 @@
 .legacy-text {
   flex: 1;
   text-align: left;
-  
+
   @media (max-width: 992px) {
     text-align: center;
   }
@@ -59,7 +60,7 @@
   font-weight: 600;
   margin-bottom: 1.5rem;
   @include anims.fadeIn;
-  
+
   @media (max-width: 768px) {
     font-size: 2.3rem;
   }
@@ -68,10 +69,14 @@
 .legacy-divider {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, vars.$secondary, lighten(vars.$secondary, 10%));
+  background: linear-gradient(
+    90deg,
+    vars.$secondary,
+    color.adjust(vars.$secondary, $lightness: 10%)
+  );
   margin-bottom: 1.5rem;
   border-radius: 2px;
-  
+
   @media (max-width: 992px) {
     margin-left: auto;
     margin-right: auto;
@@ -84,7 +89,7 @@
   line-height: 1.7;
   margin-bottom: 2rem;
   @include anims.fadeIn(0.3s);
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
   }
@@ -98,7 +103,7 @@
   position: relative;
   border-radius: 0 8px 8px 0;
   @include anims.fadeIn(0.5s);
-  
+
   .quote-mark {
     position: absolute;
     top: -10px;
@@ -106,9 +111,9 @@
     font-size: 4rem;
     color: vars.$primary;
     opacity: 0.2;
-    font-family: 'Georgia', serif;
+    font-family: "Georgia", serif;
   }
-  
+
   p {
     font-size: 1.3rem;
     color: vars.$primary;
@@ -117,12 +122,12 @@
     position: relative;
     z-index: 1;
     margin: 0 0 0.5rem 0;
-    
+
     @media (max-width: 768px) {
       font-size: 1.1rem;
     }
   }
-  
+
   .quote-attribution {
     font-size: 0.9rem;
     color: vars.$light-blue;
@@ -135,21 +140,21 @@
   justify-content: space-between;
   margin-top: 3rem;
   @include anims.fadeIn(0.7s);
-  
+
   @media (max-width: 992px) {
     justify-content: center;
     gap: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
   }
-  
+
   .pillar {
     text-align: center;
-    
+
     .material-icons {
       font-size: 2.5rem;
       color: vars.$secondary;
@@ -162,24 +167,24 @@
       justify-content: center;
       margin: 0 auto 1rem;
       transition: all 0.3s ease;
-      
+
       @media (max-width: 992px) {
         width: 60px;
         height: 60px;
         font-size: 2rem;
       }
     }
-    
+
     h3 {
       font-size: 1.2rem;
       color: vars.$primary;
       font-weight: 600;
-      
+
       @media (max-width: 992px) {
         font-size: 1.1rem;
       }
     }
-    
+
     &:hover {
       .material-icons {
         transform: translateY(-5px);
@@ -203,19 +208,19 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   transform: perspective(1000px) rotateY(-5deg);
   transition: all 0.5s ease;
-  
+
   &:hover {
     transform: perspective(1000px) rotateY(0);
-    
+
     .legacy-image {
       transform: scale(1.03);
     }
-    
+
     .legacy-image-overlay {
       opacity: 0.4;
     }
   }
-  
+
   &::after {
     content: "";
     position: absolute;
@@ -226,12 +231,12 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
     z-index: 1;
   }
-  
+
   @media (max-width: 992px) {
     max-width: 500px;
     margin: 0 auto;
     transform: none;
-    
+
     &:hover {
       transform: none;
     }
@@ -262,7 +267,7 @@
   .legacy-section {
     padding: 4rem 1.5rem;
   }
-  
+
   .legacy-content {
     gap: 2rem;
   }

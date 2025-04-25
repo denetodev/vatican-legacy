@@ -1,14 +1,19 @@
 @use "../../../styles/variables" as vars;
 @use "../../../styles/mixins" as mixins;
 @use "../../../styles/animations" as anims;
+@use "sass:color";
 
 .cta {
   position: relative;
-  background: linear-gradient(135deg, vars.$primary 0%, darken(vars.$primary, 10%) 100%);
+  background: linear-gradient(
+    135deg,
+    vars.$primary 0%,
+    color.adjust(vars.$primary, $lightness: -10%) 100%
+  );
   color: vars.$white;
   padding: calc(vars.$spacing-xl * 1.5) 0;
   overflow: hidden;
-  
+
   .cta-shape {
     position: absolute;
     bottom: -5%;
@@ -18,9 +23,9 @@
     background-color: rgba(vars.$secondary, 0.2);
     border-radius: 50%;
     z-index: 0;
-    
+
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: -30%;
       right: -80%;
@@ -57,7 +62,7 @@
 
   .cta-content {
     flex: 1;
-    
+
     h2 {
       color: vars.$white;
       margin-bottom: vars.$spacing-md;
@@ -65,9 +70,9 @@
       line-height: 1.2;
       font-weight: 700;
       position: relative;
-      
+
       &::after {
-        content: '';
+        content: "";
         display: block;
         width: 80px;
         height: 4px;
@@ -90,7 +95,7 @@
       display: flex;
       gap: vars.$spacing-md;
       margin-top: vars.$spacing-lg;
-      
+
       .btn {
         padding: vars.$spacing-sm vars.$spacing-lg;
         font-weight: 600;
@@ -100,24 +105,24 @@
         align-items: center;
         justify-content: center;
         gap: vars.$spacing-xs;
-        
+
         &.btn-primary {
           background-color: vars.$secondary;
           color: vars.$dark-gray;
           border: 2px solid vars.$secondary;
           box-shadow: 0 4px 15px rgba(vars.$secondary, 0.4);
-          
+
           &:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(vars.$secondary, 0.5);
           }
         }
-        
+
         &.btn-outline {
           background-color: transparent;
           color: vars.$white;
           border: 2px solid rgba(vars.$white, 0.6);
-          
+
           &:hover {
             background-color: rgba(vars.$white, 0.1);
             border-color: vars.$white;
@@ -129,7 +134,7 @@
 
   .cta-image {
     flex: 1;
-    
+
     .image-wrapper {
       position: relative;
       border-radius: vars.$border-radius;
@@ -137,15 +142,15 @@
       box-shadow: vars.$box-shadow;
       transform: perspective(1000px) rotateY(-5deg);
       transition: all 0.5s ease;
-      
+
       &:hover {
         transform: perspective(1000px) rotateY(0deg);
-        
+
         .quote-overlay {
           opacity: 1;
         }
       }
-      
+
       img {
         display: block;
         width: 100%;
@@ -155,26 +160,30 @@
         transition: all 0.5s ease;
         filter: brightness(0.9);
       }
-      
+
       .quote-overlay {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         padding: vars.$spacing-lg;
-        background: linear-gradient(to top, rgba(vars.$dark-gray, 0.9), rgba(vars.$dark-gray, 0));
+        background: linear-gradient(
+          to top,
+          rgba(vars.$dark-gray, 0.9),
+          rgba(vars.$dark-gray, 0)
+        );
         color: vars.$white;
         opacity: 0.8;
         transition: all 0.3s ease;
-        
+
         .quote-mark {
           font-size: 3rem;
-          font-family: 'Georgia', serif;
+          font-family: "Georgia", serif;
           line-height: 1;
           color: vars.$secondary;
           opacity: 0.8;
         }
-        
+
         .quote-text {
           font-style: italic;
           font-size: 1.2rem;
@@ -189,29 +198,29 @@
 @media (max-width: 992px) {
   .cta {
     padding: vars.$spacing-xl 0;
-    
+
     .container {
       flex-direction: column;
       text-align: center;
       gap: vars.$spacing-xl;
     }
-    
+
     .cta-content {
       h2::after {
         margin: vars.$spacing-sm auto 0;
       }
-      
+
       .cta-actions {
         justify-content: center;
       }
     }
-    
+
     .cta-image {
       max-width: 80%;
-      
+
       .image-wrapper {
         transform: perspective(1000px) rotateY(0deg);
-        
+
         .quote-overlay {
           opacity: 1;
         }
@@ -227,15 +236,15 @@
         font-size: 2rem;
       }
     }
-    
+
     .cta-image {
       max-width: 100%;
     }
-    
+
     .cta-actions {
       flex-direction: column;
       gap: vars.$spacing-sm;
-      
+
       .btn {
         width: 100%;
       }

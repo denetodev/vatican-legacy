@@ -1,6 +1,7 @@
 @use "../../../styles/variables" as vars;
 @use "../../../styles/mixins" as mixins;
 @use "../../../styles/animations" as anims;
+@use "sass:color";
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
@@ -9,7 +10,7 @@
   background: linear-gradient(
     135deg,
     vars.$primary,
-    darken(vars.$primary, 15%)
+    color.adjust(vars.$primary, $lightness: -15%)
   );
   color: vars.$white;
   padding-top: vars.$spacing-xl;
@@ -185,6 +186,10 @@
       display: flex;
       margin-bottom: vars.$spacing-md;
 
+      img {
+        height: 48px;
+      }
+
       .social-icon {
         display: flex;
         align-items: center;
@@ -247,6 +252,10 @@
       .newsletter-form {
         display: flex;
 
+        img {
+          height: 24px;
+        }
+
         input {
           flex: 1;
           padding: 12px 15px;
@@ -273,7 +282,7 @@
           transition: all 0.3s ease;
 
           &:hover {
-            background-color: darken(vars.$secondary, 10%);
+            background-color: color.adjust(vars.$secondary, $lightness: -10%);
             transform: translateX(3px);
           }
         }
@@ -317,7 +326,7 @@
         background: linear-gradient(
           135deg,
           vars.$secondary,
-          darken(vars.$secondary, 15%)
+          color.adjust(vars.$secondary, $lightness: -15%)
         );
         border-radius: 50%;
         margin-right: vars.$spacing-md;
@@ -328,6 +337,8 @@
           font-size: 1.6rem;
           font-weight: 700;
           color: vars.$dark-gray;
+          height: 58px;
+          border-radius: 50%;
         }
       }
 
@@ -380,6 +391,10 @@
       display: flex;
       gap: vars.$spacing-sm;
 
+      img {
+        height: 56px;
+      }
+
       .dev-social-icon {
         display: flex;
         align-items: center;
@@ -405,12 +420,15 @@
         }
 
         &.github {
-          background-color: #24292e;
+          background-color: #cfd0d1;
         }
 
         &.email {
-          background-color: vars.$secondary;
+          background-color: #cfd0d1;
           color: vars.$dark-gray;
+          img{
+            height: 32px;
+          }
         }
 
         &:hover {

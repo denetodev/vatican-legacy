@@ -1,24 +1,27 @@
 @use "../../../styles/variables" as vars;
 @use "../../../styles/mixins" as mixins;
 @use "../../../styles/animations" as anims;
+@use "sass:color";
 
 .section {
-  padding: 6rem 2rem;
+  padding: 8rem 2rem 6rem;
   position: relative;
   overflow: hidden;
 }
 
 .about-section {
-  background-color: vars.$light-gray;
   background-image: linear-gradient(
       to bottom,
-      rgba(vars.$light-gray, 0.97),
-      rgba(vars.$light-gray, 1)
+      color.adjust(vars.$primary, $lightness: -10%, $alpha: 1),
+      /* Começa com o mesmo tom do final do hero */
+        color.adjust(vars.$primary, $lightness: 20%, $alpha: 0.8) 40%,
+      rgba(vars.$light-gray, 1) 80%
     ),
-    url("../../../assets/vatican-bg.jpg");
+    url("../../../assets/papa-francisco-1.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  margin-top: -1px; /* Elimina qualquer possível gap entre as seções */
 }
 
 .container {
@@ -285,7 +288,7 @@
     box-shadow: 0 8px 15px rgba(vars.$primary, 0.25);
 
     &:hover {
-      background-color: darken(vars.$primary, 5%);
+      background-color: color.adjust(vars.$primary, $lightness: -5%);
       transform: translateY(-3px);
       box-shadow: 0 12px 20px rgba(vars.$primary, 0.3);
     }
